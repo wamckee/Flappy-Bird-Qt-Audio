@@ -18,7 +18,7 @@ INCLUDEPATH += $$PWD/source
 
 INCLUDEPATH += \ # submodules
                $$PWD/source/tiny-dnn-1 \
-               $$PWD/source/strobe-api-1/strobe
+               $$PWD/source/strobe-api/strobe
 
 win32:RC_ICONS += assets/icon.ico
 
