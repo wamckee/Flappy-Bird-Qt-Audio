@@ -1,23 +1,24 @@
-# Flappy Bird Qt
-# github.com/fuzun/flappy-bird-qt
+# Flappy Bird Qt with Audio control
+# github.com/wamckee/Flappy-Bird-Qt-Audio
 
 QT += core gui opengl multimedia
 QT -= network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 5): QT += openglwidgets
 
-TARGET = Flappy-Bird-Qt
+TARGET = Flappy-Bird-Qt-Audio
 TEMPLATE = app
 
-VERSION = 1.5.2
+VERSION = 1.0.0
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
 INCLUDEPATH += $$PWD/source
 
 INCLUDEPATH += \ # submodules
-               $$PWD/source/tiny-dnn \
-               $$PWD/source/strobe-api/strobe
+               $$PWD/source/tiny-dnn-1 \
+               $$PWD/source/strobe-api-1/strobe
 
 win32:RC_ICONS += assets/icon.ico
 

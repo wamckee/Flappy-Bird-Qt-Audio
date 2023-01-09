@@ -28,8 +28,8 @@ SOFTWARE.
 #define TRUE 1
 #define FALSE 0
 
-#define GAME_NAME "Flappy Bird Qt"
-#define GAME_VERSION "1.5.2"
+#define GAME_NAME "Flappy Bird Qt with Audio control"
+#define GAME_VERSION "1.0.0"
 #define GAME_DEFAULT_SCREENWIDTH 480
 #define GAME_DEFAULT_SCREENHEIGHT 800
 #define GAME_DEFAULT_SCALEFACTOR 1.6

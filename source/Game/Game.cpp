@@ -20,7 +20,6 @@ SOFTWARE.
 
 #include "Game.h"
 
-#include <QSound>
 #include <QTimer>
 #include <QImage>
 #include <QPainter>

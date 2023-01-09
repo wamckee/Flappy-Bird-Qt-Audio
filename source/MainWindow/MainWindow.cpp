@@ -20,7 +20,7 @@ SOFTWARE.
 
 #include "MainWindow.h"
 
-#include <QDesktopWidget>
+#include <QOpenGLWidget>
 #include <QSettings>
 #include <QGraphicsView>
 #include <QResizeEvent>
@@ -32,7 +32,7 @@ SOFTWARE.
 #include "Game/Game.h"
 
 #ifndef STROBE_DISABLED
-#include "strobe-api/strobe/strobe-core.h"
+#include "strobe-core.h"
 #include "StrobeDialog/StrobeDialog.h"
 #endif
 
@@ -141,9 +141,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), strobeDialog(null
     else
         graphicsView->setRenderHint(QPainter::SmoothPixmapTransform, 0);
     if(config->value(CONFIG_HQANTIALIASING, GAME_DEFAULT_HQANTIALIASING_ENABLED).toBool())
-        graphicsView->setRenderHint(QPainter::HighQualityAntialiasing);
+        graphicsView->setRenderHint(QPainter::Antialiasing);
     else
-        graphicsView->setRenderHint(QPainter::HighQualityAntialiasing, 0);
+        graphicsView->setRenderHint(QPainter::Antialiasing, 0);
 
     config->endGroup();
 

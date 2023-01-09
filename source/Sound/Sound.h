@@ -21,11 +21,11 @@ SOFTWARE.
 #ifndef SOUND_H
 #define SOUND_H
 
-#include <QSound>
+#include <QSoundEffect>
 
 class Game;
 
-class Sound : public QSound
+class Sound : public QSoundEffect
 {
     Q_OBJECT
 
@@ -33,7 +33,7 @@ protected:
     Game *game;
 
 public:
-    Sound(const QString& filename, Game *parent_game) : QSound(filename), game(parent_game) { }
+    Sound(const QString& filename, Game *parent_game) : QSoundEffect(), game(parent_game) { setSource(QUrl(QString("qrc")+filename)); }
 
     void playIfEnabled();
 

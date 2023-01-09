@@ -52,10 +52,11 @@ private:
     QPixmap Pixmap;
     QPixmap Pixmap2;
     bool toggle;
+    enum { isPixmap, isPixmap2 } whichPixmap;
 
 public:
     Button(Game *parent_game, const QPixmap& pixmap, Function function, bool toggleMode = false, const QPixmap& pixmap2 = QPixmap(), Function function2 = nullptr)
-        : QGraphicsPixmapItem(pixmap), Pixmap(pixmap), Pixmap2(pixmap2), toggle(toggleMode), buttonFunction(function), buttonFunction2(function2), game(parent_game)  {}
+        : QGraphicsPixmapItem(pixmap), Pixmap(pixmap), Pixmap2(pixmap2), toggle(toggleMode), whichPixmap(isPixmap), buttonFunction(function), buttonFunction2(function2), game(parent_game)  { setPixmap(pixmap); }
 
     virtual void invoke(Game *parent_game = nullptr);
 

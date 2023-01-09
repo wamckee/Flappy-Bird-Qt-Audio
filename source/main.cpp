@@ -34,8 +34,6 @@ int main(int argc, char **argv)
     QCoreApplication::setApplicationName(GAME_NAME);
     QCoreApplication::setApplicationVersion(GAME_VERSION);
 
-    qsrand(QTime::currentTime().msec());
-
     MainWindow mainWindow;
     mainWindow.show();
 

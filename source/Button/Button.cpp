@@ -22,7 +22,6 @@ SOFTWARE.
 
 #include <QMessageBox>
 #include <QString>
-#include <QSound>
 
 #include "Game/Game.h"
 #include "Scene/Scene.h"
@@ -31,7 +30,7 @@ SOFTWARE.
 void ButtonFuncs::about(Game *game_instance)
 {
     QWidget *gameQObject = dynamic_cast<QWidget *>(game_instance);
-    QMessageBox::about(gameQObject, "About...", QString("Flappy Bird Qt by fuzun\nVersion: v%1\n\ngithub.com/fuzun/Flappy-Bird-Qt").arg(QCoreApplication::applicationVersion()));
+    QMessageBox::about(gameQObject, "About...", QString("%1 by wamckee\nVersion: v%2\n\ngithub.com/wamckee/Flappy-Bird-Qt-Audio").arg(QCoreApplication::applicationName()).arg(QCoreApplication::applicationVersion()));
 }
 
 void ButtonFuncs::play(Game *game_instance)
@@ -76,7 +75,7 @@ void ButtonFuncs::aiPlay(Game *game_instance)
 
 void Button::invoke(Game *parent_game)
 {
-    bool toggleStatus = (pixmap() == Pixmap);
+    bool toggleStatus = (whichPixmap == isPixmap);
     if(parent_game == nullptr)
         if(toggle && !toggleStatus)
             buttonFunction2(game);
@@ -89,5 +88,8 @@ void Button::invoke(Game *parent_game)
             buttonFunction(parent_game);
 
     if(toggle)
+    {
+        whichPixmap = toggleStatus ? isPixmap2 : isPixmap;
         setPixmap(toggleStatus ? Pixmap2 : Pixmap);
+    }
 }

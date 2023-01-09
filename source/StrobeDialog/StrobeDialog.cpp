@@ -26,7 +26,7 @@ SOFTWARE.
 #include <QLayout>
 #include <QTimer>
 
-#include "strobe-api/strobe/strobe-core.h"
+#include "strobe-core.h"
 
 StrobeDialog::StrobeDialog(StrobeAPI *strobeAPI, QWidget *parent, int posX, int posY, int interval) : QDialog(parent), strobe(strobeAPI)
 {

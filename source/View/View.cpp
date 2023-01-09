@@ -26,7 +26,7 @@ SOFTWARE.
 #include <QPainter>
 
 #ifndef STROBE_DISABLED
-#include "strobe-api/strobe/strobe-core.h"
+#include "strobe-core.h"
 #endif
 
 View::View(QWidget *parent, StrobeAPI *strobeAPI) : QGraphicsView(parent), strobe(strobeAPI)

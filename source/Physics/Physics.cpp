@@ -24,6 +24,7 @@ SOFTWARE.
 #include <QGraphicsScene>
 #include <QTimer>
 #include <QTransform>
+#include <QRandomGenerator>
 
 #include "Game/Game.h"
 #include "View/View.h"
@@ -278,7 +279,7 @@ bool Physics::collisionCheck()
 
 int Physics::randInt(int low, int high)
 {
-    return qrand() % ((high + 1) - low) + low;
+    return QRandomGenerator::global()->generate() % ((high + 1) - low) + low;
 }
 
 void Physics::movePipes()
