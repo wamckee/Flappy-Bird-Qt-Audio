@@ -17,7 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 INCLUDEPATH += $$PWD/source
 
 INCLUDEPATH += \ # submodules
-               $$PWD/source/tiny-dnn-1 \
+               $$PWD/source/tiny-dnn \
                $$PWD/source/strobe-api/strobe
 
 win32:RC_ICONS += assets/icon.ico
