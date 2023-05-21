@@ -49,3 +49,6 @@ debug
 *.vcxproj*
 *.rc
 release
+
+*.app/*
+
