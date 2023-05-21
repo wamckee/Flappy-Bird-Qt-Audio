@@ -56,7 +56,7 @@ HEADERS += \
     source/StrobeDialog/StrobeDialog.h \
     source/AI/AI.h \
     source/vector.h \
-    bounceAudio.h
+    bounce/bounceAudio.h
 
 RESOURCES += \
     assets/Resource.qrc
