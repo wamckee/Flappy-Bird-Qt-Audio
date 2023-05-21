@@ -1,0 +1,3 @@
+codesign --strict --timestamp --force --verify --verbose --entitlements misc/entitlements.plist --sign "Developer ID Application: William McKee" --options runtime ./Flappy-Bird-Qt-Audio.app --deep
+codesign --strict --timestamp --force --verify --verbose --entitlements misc/entitlements.plist --sign "Developer ID Application: William McKee" --options runtime ./bounce.app/Contents/plugins/styles/libqmacstyle.dylib
+codesign --strict --timestamp --force --verify --verbose --entitlements misc/entitlements.plist --sign "Developer ID Application: William McKee" --options runtime ./bounce.app/Contents/plugins/platforms/libqcocoa.dylib

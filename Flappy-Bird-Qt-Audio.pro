@@ -14,6 +14,9 @@ VERSION = 1.0.0
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
+MOC_DIR = tmp
+OBJECTS_DIR = tmp
+
 INCLUDEPATH += $$PWD/source
 
 INCLUDEPATH += \ # submodules
