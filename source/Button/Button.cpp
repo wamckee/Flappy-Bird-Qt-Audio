@@ -30,7 +30,7 @@ SOFTWARE.
 void ButtonFuncs::about(Game *game_instance)
 {
     QWidget *gameQObject = dynamic_cast<QWidget *>(game_instance);
-    QMessageBox::about(gameQObject, "About...", QString("%1 by wamckee\nVersion: v%2\n\ngithub.com/wamckee/Flappy-Bird-Qt-Audio").arg(QCoreApplication::applicationName()).arg(QCoreApplication::applicationVersion()));
+    QMessageBox::about(gameQObject, "About...", QString("%1 by fuzun and wamckee\nVersion: v%2\n\ngithub.com/wamckee/Flappy-Bird-Qt-Audio").arg(QCoreApplication::applicationName()).arg(QCoreApplication::applicationVersion()));
 }
 
 void ButtonFuncs::play(Game *game_instance)

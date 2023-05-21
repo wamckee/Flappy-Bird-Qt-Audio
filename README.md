@@ -2,6 +2,7 @@
 # Flappy Bird Qt
 
 A multi-resolution supported clone of Flappy Bird made with C++ and Qt Framework.
+Audio controls of flappy bird have been added.
 
 ![flappy-bird-qt-screenshot](https://vgy.me/zkiNbu.png)
 
