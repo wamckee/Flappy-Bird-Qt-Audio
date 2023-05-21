@@ -20,6 +20,8 @@ INCLUDEPATH += \ # submodules
                $$PWD/source/tiny-dnn \
                $$PWD/source/strobe-api/strobe
 
+INCLUDEPATH += bounce rtaudio Yin-Pitch-Tracking fir
+
 win32:RC_ICONS += assets/icon.ico
 
 CONFIG += c++14
@@ -35,7 +37,11 @@ SOURCES += \
     source/Sound/Sound.cpp \
     source/View/View.cpp \
     source/StrobeDialog/StrobeDialog.cpp \
-    source/AI/AI.cpp
+    source/AI/AI.cpp \
+    bounce/bounceAudio.cpp \
+    rtaudio/RtAudio.cpp \
+    Yin-Pitch-Tracking/Yin.c \
+    fir/cheby.cpp fir/filter.cpp
 
 HEADERS += \
     source/MainWindow/MainWindow.h \
@@ -49,8 +55,26 @@ HEADERS += \
     source/View/View.h \
     source/StrobeDialog/StrobeDialog.h \
     source/AI/AI.h \
-    source/vector.h
+    source/vector.h \
+    bounceAudio.h
 
 RESOURCES += \
     assets/Resource.qrc
+
+mac {
+  QMAKE_INFO_PLIST = flappy.Info.plist
+  DEFINES += __MACOSX_CORE__
+  LIBS += -framework CoreAudio
+  LIBS += -framework Foundation
+}
+else {
+  unix {
+  DEFINES += _LINUX_PULSE__
+  LIBS += -lpulse -lpulse-simple
+  }
+}
+win32 {
+  DEFINES += __WINDOWS_DS__
+  LIBS += User32.lib Ole32.lib Dsound.lib
+}
 

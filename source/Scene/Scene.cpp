@@ -564,7 +564,7 @@ void Scene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
     }
 
-    game->clickEvent();
+    game->clickEvent((event->button() & Qt::RightButton) ? 1 : -1);
     event->accept();
 }
 
@@ -580,6 +580,19 @@ void Scene::keyPressEvent(QKeyEvent *event)
         event->accept();
         return;
     }
-    game->clickEvent();
+    game->clickEvent(event->key() == Qt::Key_U ? 1 : -1);
     event->accept();
 }
+
+void Scene::audioEvent(double start, double end)
+{
+    if((!isClickAvailable[0] || !isClickAvailable[1]) && !(game->isGameActuallyStarted()))
+    {
+        return;
+    }
+    double delta = end - start;
+    int D = delta < 0.0 ? (int)(delta - 0.5) : (int)(delta + 0.5);
+    game->clickEvent((int)((end - D - start) * 300.0));
+}
+
+

@@ -97,6 +97,10 @@ protected:
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
 
+public slots:
+
+    void audioEvent(double,double);
+
 };
 
 #endif // SCENE_H

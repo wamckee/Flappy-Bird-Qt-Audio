@@ -45,7 +45,7 @@ public:
     void setRotation(qreal angle);
     void startOscillate();
     void stopOscillate();
-    void rise();
+    void rise(int);
     void setColor(BirdTypes type);
     void fall();
 

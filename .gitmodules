@@ -4,3 +4,9 @@
 [submodule "source/tiny-dnn"]
 	path = source/tiny-dnn
 	url = https://github.com/tiny-dnn/tiny-dnn
+[submodule "rtaudio"]
+	path = rtaudio
+	url = https://github.com/wamckee/rtaudio
+[submodule "Yin-Pitch-Tracking"]
+	path = Yin-Pitch-Tracking
+	url = https://github.com/wamckee/Yin-Pitch-Tracking

@@ -34,6 +34,7 @@ SOFTWARE.
 #include "Scene/Scene.h"
 #include "Physics/Physics.h"
 #include "Sound/Sound.h"
+#include "bounceAudio.h"
 
 #ifndef AI_DISABLED
 #include "AI/AI.h"
@@ -42,6 +43,10 @@ SOFTWARE.
 Game::Game(View *GraphicsView, QSettings *cfg, QSettings *settings, int windowWidth, int windowHeight)
     : graphicsView(GraphicsView), screenWidth(windowWidth), screenHeight(windowHeight), config(cfg), registry(settings)
 {
+    m_bounceAudio = new AudioThread();
+    QObject::connect(this, &Game::startAudio, m_bounceAudio, &AudioThread::startAudio);
+    QObject::connect(this, &Game::stopAudio, m_bounceAudio, &AudioThread::stopAudio);
+
     scoreRecord = 0;
     score = 0;
 
@@ -67,11 +72,18 @@ Game::Game(View *GraphicsView, QSettings *cfg, QSettings *settings, int windowWi
 
     scene = new Scene(this, QRectF(0, 0, screenWidth, screenHeight));
 
+    QObject::connect(m_bounceAudio, &AudioThread::outputAudio,
+                     scene, &Scene::audioEvent);
+
     physics = new Physics(this, physicsTickRate, physicsComplexAnalysis, true, physicsSpeedFactor, physicsDisableCollisionDetection);
+
+    emit startAudio();
 }
 
 Game::~Game()
 {
+    emit stopAudio();
+
     AIDisable();
     delete physics;
     delete scene;
@@ -81,6 +93,8 @@ Game::~Game()
     delete sound_point;
     delete sound_swooshing;
     delete sound_wing;
+
+    delete m_bounceAudio;
 }
 
 void Game::loadConfiguration()
@@ -135,7 +149,7 @@ qreal Game::getScaleFactor()
     return scaleFactor;
 }
 
-void Game::clickEvent()
+void Game::clickEvent(int dir)
 {
     if(gameActuallyStarted)
     {
@@ -161,7 +175,7 @@ void Game::clickEvent()
         if(scene->isGroupVisible(GROUP_NEWROUND))
             scene->fadeGroup(GROUP_NEWROUND, false, 5);
 
-        scene->bird->rise();
+        scene->bird->rise(dir);
 
         sound_wing->playIfEnabled();
 

@@ -25,13 +25,14 @@ SOFTWARE.
 
 class Sound;
 
-class Game
+class Game : public QObject
 {
+    Q_OBJECT
 public:
     Game(class View *GraphicsView, class QSettings *cfg, class QSettings *registry, int windowWidth, int windowHeight);
     virtual ~Game();
 
-   void clickEvent();
+   void clickEvent(int);
    void updateScore();
    void gameOver();
    void prepareFirstGame();
@@ -68,6 +69,8 @@ public:
    bool aiPlays;
 
 private:
+    class AudioThread * m_bounceAudio;
+
     bool soundEnabled;
     bool gameFinished, gameStarted;
     bool gameActuallyStarted;
@@ -96,6 +99,10 @@ protected:
     class Physics *physics;
 
     class AI *ai;
+
+signals:
+    void startAudio();
+    void stopAudio();
 };
 
 #endif // GAME_H

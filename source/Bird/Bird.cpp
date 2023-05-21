@@ -129,7 +129,7 @@ void Bird::gravitation()
 
     rotate(90, 675, QEasingCurve::InCubic);
 
-    qreal endPos = groundYPos;
+    qreal endPos = y();  // groundYPos;
     qreal curPosY = y();
 
     yAnimator->setStartValue(curPosY);
@@ -190,15 +190,15 @@ void Bird::stopOscillate()
     oscillator->stop();
 }
 
-void Bird::rise()
+void Bird::rise(int dir)
 {
     qreal curPosY = y();
     yAnimator->stop();
     yAnimator->setStartValue(curPosY);
     yAnimator->setEasingCurve(QEasingCurve::OutQuad);
-    yAnimator->setEndValue(curPosY - (screenHeight / 10));
+    yAnimator->setEndValue(curPosY - dir * (screenHeight / 100));
 
-    yAnimator->setDuration(285);
+    yAnimator->setDuration(23);
 
     yAnimator->start();
 
