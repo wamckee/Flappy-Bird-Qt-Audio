@@ -204,6 +204,9 @@ void Bird::rise(int dir)
 
     birdDesigner->setInterval(35);
 
-    rotate(-20, 95, QEasingCurve::OutQuad);
+    if (dir == 0)
+        rotate(0, 95, QEasingCurve::OutQuad);
+    else
+        rotate(dir > 0 ? -20 : 20, 95, QEasingCurve::OutQuad);
 }
 
